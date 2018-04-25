@@ -1,19 +1,15 @@
-const settings = (state = [], action)=>{
+const settings = (state = {feedVisible:false}, action)=>{
     switch (action.type) {
         case 'SHOW_FEED':
-            return [
+            return {
                 ...state,
-                {
-                    feedVisible: true
-                }
-            ];
+                feedVisible: true
+            };
         case 'HIDE_FEED':
-            return [
+            return {
                 ...state,
-                {
-                    feedVisible: false
-                }
-            ];
+                feedVisible: false
+            };
         default:
             return state
     }
