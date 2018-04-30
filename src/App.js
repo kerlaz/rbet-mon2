@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Socket from './digitain/Socket';
+const webSocket = new Socket();
+
 
 class App extends Component {
     componentDidMount(){
         console.log(this.refs.test.innerHTML);
+        console.log(webSocket);
     }
     render() {
         return (
