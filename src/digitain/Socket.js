@@ -6,13 +6,13 @@ export default class Socket {
         this.webSocket = new WebSocket(this.uri);
         this.webSocket.onopen = () => {console.log('websocket opened');this.subscribe()};
         this.webSocket.onclose = () => {console.log('websocket closed')};
-        this.webSocket.onmessage = () => {console.log(this.webSocket.readyState)};
+        this.webSocket.onmessage = (evt) => {console.log(JSON.parse(evt.data))};
         return this;
     }
-    subscribe(){
+    subscribe(settings = [`live_sport:-1::1`,`sport:-1::1`]){
         let message = JSON.stringify({
             action: 'subscribe',
-            objects: [`live_sport:-1::1`]
+            objects: settings
         });
         this.webSocket.send(message);
     }
